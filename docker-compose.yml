@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  actuator-client-api:
+    image: jmedinaks/actuator-client-api
+    networks:
+      - backend
+    ports:
+      - "8080:8080"
+  grafana:
+    image: jmedinaks/grafana
+    networks:
+      - backend
+    ports:
+      - "3000:3000"
+  prometheus:
+    image: jmedinaks/actuator-client-prometheus
+    networks:
+      - backend
+    ports:
+      - "9090:9090"
+networks:
+  backend:
+    driver: bridge
